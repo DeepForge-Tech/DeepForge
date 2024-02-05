@@ -1,11 +1,21 @@
-FROM node:18-buster
+# Use an official Node.js 18 image as the base image
+FROM rabbitmq:latest
 
+# Set the working directory to /app
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+RUN apt update -y && apt upgrade -y
+RUN apt install nodejs npm -y
 
+# Install the required dependencies
 RUN npm install
 
+# Copy the application code to the container
 COPY . .
 
+# Expose the port that the application will run on
+EXPOSE 80
+EXPOSE 5000
+EXPOSE 443
+# Start the application
 # CMD ["npm", "start"]
