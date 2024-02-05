@@ -1,15 +1,29 @@
 services:
-- type: web
-  name: rabbitmq
-  env: docker
-  envVars:
-  - key: RABBITMQ_ERLANG_COOKIE
-    generateValue: true
-  - key: RABBITMQ_DEFAULT_USER
-    value: rabbitmq
-  - key: RABBITMQ_DEFAULT_PASS
-    generateValue: true
-  disk:
+  - type: web
     name: rabbitmq
-    mountPath: /var/lib/rabbitmq
-    sizeGB: 20
+    env: docker
+    envVars:
+    - key: RABBITMQ_ERLANG_COOKIE
+      generateValue: true
+    - key: RABBITMQ_DEFAULT_USER
+      value: rabbitmq
+    - key: RABBITMQ_DEFAULT_PASS
+      generateValue: true
+    disk:
+      name: rabbitmq
+      mountPath: /var/lib/rabbitmq
+      sizeGB: 20
+  - type: web
+    name: deepforge
+    runtime: nodejs
+    repo: https://github.com/DeepForge-Technology/DeepForge
+    scaling:
+      minInstances: 1
+      maxInstances: 3
+      targetMemoryPercent: 100 # optional if targetCPUPercent is set
+      targetCPUPercent: 100 # optional if targetMemory is set
+    buildCommand: npm install
+    startCommand: npm start
+    domains:
+      - deepforge-1ubw.onrender.com
+    autoDeploy: true # optional
