@@ -7,12 +7,12 @@ WORKDIR /app
 RUN apt update -y && apt upgrade -y
 RUN apt install nodejs npm -y
 
-# Install the required dependencies
-RUN npm install
+
 
 # Copy the application code to the container
 COPY . .
-
+# Install the required dependencies
+RUN npm install
 # Expose the port that the application will run on
 EXPOSE 80
 EXPOSE 5000
