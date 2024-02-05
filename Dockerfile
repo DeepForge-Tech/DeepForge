@@ -12,4 +12,4 @@ USER rabbitmq:rabbitmq
 
 COPY . .
 RUN npm install
-CMD ["npm","install"]
+CMD ["npm","start"]
