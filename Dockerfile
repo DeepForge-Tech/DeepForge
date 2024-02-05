@@ -1,9 +1,8 @@
 FROM rabbitmq:3.8.0-management
 WORKDIR /app
 RUN apt update -y && apt upgrade -y
-RUN apt install nodejs npm -y
-RUN npm install
-RUN npm install express 
+RUN apt install nodejs -y
+RUN npm install express amqplib dotenv pg postgres socket.io
 COPY rabbitmq.conf /etc/rabbitmq/
 COPY . .
 ENV RABBITMQ_NODENAME=rabbit@localhost
