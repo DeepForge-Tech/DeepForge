@@ -17,6 +17,8 @@ RUN npm install
 EXPOSE 80
 EXPOSE 5000
 EXPOSE 443
+EXPOSE 5672
+EXPOSE 15672
 # Start the application
-# CMD ["npm", "start"]
-ENTRYPOINT [ "npm start" ]
+CMD ["npm", "start"]
+# ENTRYPOINT [ "npm start" ]
