@@ -19,3 +19,4 @@ EXPOSE 5000
 EXPOSE 443
 # Start the application
 # CMD ["npm", "start"]
+ENTRYPOINT [ "npm start" ]
