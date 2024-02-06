@@ -19,9 +19,7 @@ services:
     repo: https://github.com/DeepForge-Technology/DeepForge
     scaling:
       minInstances: 1
-      maxInstances: 3
-      targetMemoryPercent: 100 # optional if targetCPUPercent is set
-      targetCPUPercent: 100 # optional if targetMemory is set
+      maxInstances: 3 # optional if targetMemory is set
     buildCommand: npm install
     startCommand: npm start
     domains:
