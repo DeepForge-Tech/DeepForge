@@ -1,9 +1,8 @@
-FROM rabbitmq:3.8.0-management
-
+FROM node:18-alpine
+WORKDIR /app
+ 
 COPY rabbitmq.conf /etc/rabbitmq/
-
+COPY . .
+RUN npm install
 ENV RABBITMQ_NODENAME=rabbit@localhost
-
-RUN chown rabbitmq:rabbitmq /etc/rabbitmq/rabbitmq.conf
-
-USER rabbitmq:rabbitmq
+CMD["npm","start"]
