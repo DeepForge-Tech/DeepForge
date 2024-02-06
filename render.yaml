@@ -15,11 +15,8 @@ services:
       sizeGB: 20
   - type: web
     name: deepforge
-    runtime: nodejs
-    repo: https://github.com/DeepForge-Technology/DeepForge
-    scaling:
-      minInstances: 1
-      maxInstances: 3 # optional if targetMemory is set
+    runtime: NodeJS
+    repo: https://github.com/DeepForge-Technology/DeepForge # optional if targetMemory is set
     buildCommand: npm install
     startCommand: npm start
     domains:
