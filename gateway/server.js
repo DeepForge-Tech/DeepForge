@@ -17,6 +17,6 @@ server.get("/serverApi", function (request, result) {
 	result.send("Server API is called.")
 })
 
-server.start(80).then(function () {
+server.start(process.env.PORT || 80).then(function () {
 	console.log("Server is started running.")
 })
