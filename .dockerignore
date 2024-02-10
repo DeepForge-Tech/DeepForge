@@ -1,4 +1,1 @@
-node_modules/
-build/
-rabbitmq-data/
-package-lock.json
+node_modules
