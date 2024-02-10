@@ -3,20 +3,20 @@ const gateway = require("fast-gateway")
 const server = gateway({
 	routes: [
 		{
-			prefix: "/users",
-			target: "http://localhost:3001"
-		},
-		{
-			prefix: "/posts",
-			target: "http://localhost:3002"
+			prefix: "/api",
+			target: "http://localhost:" + (process.env.DB_SERVICE_PORT || 5001)
 		}
+		// {
+		// 	prefix: "/posts",
+		// 	target: "http://localhost:3002"
+		// }
 	]
 })
 
-server.get("/serverApi", function (request, result) {
-	result.send("Server API is called.")
+server.get("/",async function (req, res) {
+	res.send("Server API is called.")
 })
 
-server.start(process.env.PORT || 80).then(function () {
+server.start(process.env.PORT || 80).then(async function () {
 	console.log("Server is started running.")
 })
